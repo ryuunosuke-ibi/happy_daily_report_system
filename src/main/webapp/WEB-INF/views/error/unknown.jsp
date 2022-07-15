@@ -4,6 +4,6 @@
 
 <c:import url="../layout/app.jsp">
         <c:param name="content">
-                <h2>お探しのページは見つかりませんでした。</h2>
+                <h2>おさがしのページは見つかりませんでした。</h2>
         </c:param>
 </c:import>
