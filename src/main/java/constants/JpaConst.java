@@ -106,5 +106,8 @@ String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e 
     //指定した従業員が作成した顧客の件数を取得する
    // String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
     //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Customer AS r WHERE r.employee = :" + JPQL_PARM_CUSTOMER;
+    //顧客番号を条件に未削除の顧客を取得する
+    String Q_CUS_GET_BY_CODE = ENTITY_EMP + ".getByCode";
+    String Q_CUS_GET_BY_CODE_DEF = "SELECT e FROM Customer AS e WHERE e.deleteFlag = 0 AND e.code = :";
 
 }

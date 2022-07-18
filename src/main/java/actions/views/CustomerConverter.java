@@ -18,20 +18,20 @@ public class CustomerConverter {
      * @param ev CustomerViewのインスタンス
      * @return Customerのインスタンス
      */
-    public static Customer toModel(CustomerView ev) {
+    public static Customer toModel(CustomerView cv) {
 
         return new Customer(
-                ev.getId(),
-                ev.getCode(),
-                ev.getName(),
-                ev.getPhone_number(),
-                ev.getMail_adress(),
+                cv.getId(),
+                cv.getCode(),
+                cv.getName(),
+                cv.getPhone_number(),
+                cv.getMail_adress(),
 
-                ev.getCreatedAt(),
-                ev.getUpdatedAt(),
-                ev.getDeleteFlag() == null
+                cv.getCreatedAt(),
+                cv.getUpdatedAt(),
+                cv.getDeleteFlag() == null
                         ? null
-                        : ev.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
+                        : cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
                                 ? JpaConst.CUS_DEL_TRUE
                                 : JpaConst.CUS_DEL_FALSE);
     }
@@ -41,24 +41,24 @@ public class CustomerConverter {
      * @param e Employeeのインスタンス
      * @return EmployeeViewのインスタンス
      */
-    public static CustomerView toView(Customer e) {
+    public static CustomerView toView(Customer c) {
 
-        if(e == null) {
+        if(c == null) {
             return null;
         }
 
         return new CustomerView(
-                e.getId(),
-                e.getCode(),
-                e.getName(),
-                e.getPhone_number(),
-                e.getMail_adress(),
+                c.getId(),
+                c.getCode(),
+                c.getName(),
+                c.getPhone_number(),
+                c.getMail_adress(),
 
-                e.getCreatedAt(),
-                e.getUpdatedAt(),
-                e.getDeleteFlag() == null
+                c.getCreatedAt(),
+                c.getUpdatedAt(),
+                c.getDeleteFlag() == null
                         ? null
-                        : e.getDeleteFlag() == JpaConst.CUS_DEL_TRUE
+                        : c.getDeleteFlag() == JpaConst.CUS_DEL_TRUE
                                 ? AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
                                 : AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
     }
@@ -69,13 +69,13 @@ public class CustomerConverter {
      * @return Viewモデルのリスト
      */
     public static List<CustomerView> toViewList(List<Customer> list) {
-        List<CustomerView> evs = new ArrayList<>();
+        List<CustomerView> cvs = new ArrayList<>();
 
-        for (Customer e : list) {
-            evs.add(toView(e));
+        for (Customer c : list) {
+            cvs.add(toView(c));
         }
 
-        return evs;
+        return cvs;
     }
 
     /**
@@ -83,15 +83,15 @@ public class CustomerConverter {
      * @param e DTOモデル(コピー先)
      * @param ev Viewモデル(コピー元)
      */
-    public static void copyViewToModel(Customer e, CustomerView ev) {
-        e.setId(ev.getId());
-        e.setCode(ev.getCode());
-        e.setName(ev.getName());
-        e.setPhone_number(ev.getPhone_number());
-        e.setMail_adress(ev.getMail_adress());
-        e.setCreatedAt(ev.getCreatedAt());
-        e.setUpdatedAt(ev.getUpdatedAt());
-        e.setDeleteFlag(ev.getDeleteFlag());
+    public static void copyViewToModel(Customer c, CustomerView cv) {
+        c.setId(cv.getId());
+        c.setCode(cv.getCode());
+        c.setName(cv.getName());
+        c.setPhone_number(cv.getPhone_number());
+        c.setMail_adress(cv.getMail_adress());
+        c.setCreatedAt(cv.getCreatedAt());
+        c.setUpdatedAt(cv.getUpdatedAt());
+        c.setDeleteFlag(cv.getDeleteFlag());
 
     }
 
