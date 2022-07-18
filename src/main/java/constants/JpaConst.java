@@ -110,4 +110,8 @@ String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e 
     String Q_CUS_GET_BY_CODE = ENTITY_EMP + ".getByCode";
     String Q_CUS_GET_BY_CODE_DEF = "SELECT e FROM Customer AS e WHERE e.deleteFlag = 0 AND e.code = :";
 
+     //指定した顧客が作成した商談の件数を取得する
+    //String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
+    //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Business AS r WHERE r.customer = :" + JPQL_PARM_CUSTOMER;
+
 }

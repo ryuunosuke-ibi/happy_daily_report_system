@@ -41,6 +41,15 @@ public enum AttributeConst {
     DEL_FLAG_TRUE(1),
     DEL_FLAG_FALSE(0),
 
+    //顧客管理
+    CUSTOMER("customer"),
+    CUSTOMERS("customers"),
+    CUS_COUNT("customers_count"),
+    CUS_ID("id"),
+    CUS_CODE("code"),
+    CUS_NAME("name"),
+    CUS_ADMIN_FLG("admin_flag"),
+
     //日報管理
     REPORT("report"),
     REPORTS("reports"),
@@ -49,6 +58,8 @@ public enum AttributeConst {
     REP_DATE("report_date"),
     REP_TITLE("title"),
     REP_CONTENT("content");
+
+
 
     private final String text;
     private final Integer i;

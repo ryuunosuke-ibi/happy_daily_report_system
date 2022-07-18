@@ -67,13 +67,13 @@ public class Customer {
     /**
      * 電話番号
      */
-    @Column(name = JpaConst.CUS_COL_NAME, nullable = false)
+    @Column(name = JpaConst.CUS_COL_PHONE_NUMBER, nullable = false)
     private String phone_number;
 
     /**
-     * 電話番号
+     * メールアドレス
      */
-    @Column(name = JpaConst.CUS_COL_NAME, nullable = false)
+    @Column(name = JpaConst.CUS_COL_MAIL_ADRESS, nullable = false)
     private String mail_adress;
 
     /**

@@ -63,7 +63,7 @@ public class CustomerValidator {
 
         //入力値がなければエラーメッセージを返却
         if (code == null || code.equals("")) {
-            return MessageConst.E_NOEMP_CODE.getMessage();
+            return MessageConst.E_NOCUS_CODE.getMessage();
         }
 
         if (codeDuplicateCheckFlag) {
@@ -100,7 +100,7 @@ public class CustomerValidator {
     private static String validateName(String name) {
 
         if (name == null || name.equals("")) {
-            return MessageConst.E_NONAME.getMessage();
+            return MessageConst.E_NONAMECUS.getMessage();
         }
 
         //入力値がある場合は空文字を返却
