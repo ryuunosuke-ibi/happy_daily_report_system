@@ -40,14 +40,31 @@ public interface JpaConst {
     String REP_COL_CREATED_AT = "created_at"; //登録日時
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
 
+  //顧客テーブル
+    String TABLE_CUS = "customers"; //テーブル名
+    //顧客テーブルカラム
+    String CUS_COL_ID = "id"; //id
+    String CUS_COL_CODE = "code"; //顧客番号
+    String CUS_COL_NAME = "name"; //顧客名
+    String CUS_COL_PHONE_NUMBER = "phone_number";//電話番号
+    String CUS_COL_MAIL_ADRESS = "mail_adress";//メールアドレス
+    String CUS_COL_CREATED_AT = "created_at"; //登録日時
+    String CUS_COL_UPDATED_AT = "updated_at"; //更新日時
+    String CUS_COL_DELETE_FLAG = "delete_flag"; //削除フラグ
+
+    int CUS_DEL_TRUE = 1; //削除フラグON(削除済み)
+    int CUS_DEL_FALSE = 0; //削除フラグOFF(現役)
+
     //Entity名
     String ENTITY_EMP = "employee"; //従業員
     String ENTITY_REP = "report"; //日報
+    String ENTITY_CUS = "customer"; //顧客
 
     //JPQL内パラメータ
     String JPQL_PARM_CODE = "code"; //社員番号
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
+    String JPQL_PARM_CUSTOMER = "customer"; //顧客
 
     //NamedQueryの nameとquery
     //全ての従業員をidの降順に取得する
@@ -74,5 +91,20 @@ String Q_EMP_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e 
     //指定した従業員が作成した日報の件数を取得する
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
+
+
+    //NamedQueryの nameとquery
+    //全ての顧客をidの降順に取得する
+    String Q_CUS_GET_ALL = ENTITY_CUS + ".getAll"; //name
+    String Q_CUS_GET_ALL_DEF = "SELECT e FROM Customer AS e ORDER BY e.id DESC"; //query
+    //全ての顧客の件数を取得する
+    String Q_CUS_COUNT = ENTITY_CUS + ".count";
+    String Q_CUS_COUNT_DEF = "SELECT COUNT(e) FROM Customer AS e";
+  //指定した顧客番号を保持する従業員の件数を取得する
+    String Q_CUS_COUNT_REGISTERED_BY_CODE = ENTITY_CUS + ".countRegisteredByCode";
+String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e WHERE e.code = :" + JPQL_PARM_CODE;;
+    //指定した従業員が作成した顧客の件数を取得する
+   // String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
+    //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Customer AS r WHERE r.employee = :" + JPQL_PARM_CUSTOMER;
 
 }
