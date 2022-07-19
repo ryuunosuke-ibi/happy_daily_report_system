@@ -107,7 +107,7 @@ public class CustomerService extends ServiceBase {
 
         //バリデーションエラーがなければデータを登録する
         if (errors.size() == 0) {
-            create(cv);
+            //create(cv);
 
             createInternal(cv);
         }
@@ -215,7 +215,7 @@ public class CustomerService extends ServiceBase {
 
     /**
      * 顧客データを1件登録する
-     * @param ev 顧客データ
+     * @param cv 顧客データ
      * @return 登録結果(成功:true 失敗:false)
      */
     private void createInternal(CustomerView cv) {
@@ -228,7 +228,7 @@ public class CustomerService extends ServiceBase {
 
     /**
      * 顧客データを更新する
-     * @param ev 画面から入力された顧客の登録内容
+     * @param cv 画面から入力された顧客の登録内容
      */
     private void updateInternal(CustomerView cv) {
 

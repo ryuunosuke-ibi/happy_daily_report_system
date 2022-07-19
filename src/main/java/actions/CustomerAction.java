@@ -9,6 +9,7 @@ import actions.views.CustomerView;
 import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
+import constants.MessageConst;
 import services.CustomerService;
 
 /**
@@ -75,6 +76,53 @@ public class CustomerAction extends ActionBase {
 
         //新規登録画面を表示
         forward(ForwardConst.FW_CUS_NEW);
+    }
+
+    /**
+     * 新規登録を行う
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void create() throws ServletException, IOException {
+
+        //CSRF対策 tokenのチェック
+        if (checkToken()) {
+
+            //パラメータの値を元に顧客情報のインスタンスを作成する
+            CustomerView cv = new CustomerView(
+                    null,
+                    getRequestParam(AttributeConst.CUS_CODE),
+                    getRequestParam(AttributeConst.CUS_NAME),
+                    getRequestParam(AttributeConst.CUS_PHONE_NUMBER),
+                    getRequestParam(AttributeConst.CUS_MAIL_ADRESS),
+                    null,
+                    null,
+                    AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
+
+            //顧客情報登録
+            List<String> errors = service.create(cv);
+
+            if (errors.size() > 0) {
+                //登録中にエラーがあった場合
+
+                putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+                putRequestScope(AttributeConst.CUSTOMER, cv); //入力された顧客情報
+                putRequestScope(AttributeConst.ERR, errors); //エラーのリスト
+
+                //新規登録画面を再表示
+                forward(ForwardConst.FW_CUS_NEW);
+
+            } else {
+                //登録中にエラーがなかった場合
+
+                //セッションに登録完了のフラッシュメッセージを設定
+                putSessionScope(AttributeConst.FLUSH, MessageConst.I_REGISTERED.getMessage());
+
+                //一覧画面にリダイレクト
+                redirect(ForwardConst.ACT_CUS, ForwardConst.CMD_INDEX);
+            }
+
+        }
     }
 
 

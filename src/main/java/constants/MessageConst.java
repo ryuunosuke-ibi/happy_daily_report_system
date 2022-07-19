@@ -22,6 +22,8 @@ public enum MessageConst {
     E_NOPASSWORD("パスワードを入力してください。"),
     E_NOEMP_CODE("社員番号を入力してください。"),
     E_NOCUS_CODE("顧客番号を入力してください。"),
+    E_NOPHONE_CODE("電話番号を入力してください。"),
+    E_NOMAIL_CODE("メールアドレスを入力してください。"),
     E_EMP_CODE_EXIST("入力された社員番号の情報は既に存在しています。"),
     E_CUS_CODE_EXIST("入力された顧客番号の情報は既に存在しています。"),
     E_NOTITLE("タイトルを入力してください。"),

@@ -38,13 +38,13 @@ public class CustomerValidator {
         }
 
         //電話番号のチェック
-        String phone_numberError = validateName(cv.getName());
+        String phone_numberError = validatePhone_number(cv.getPhone_number());
         if (!phone_numberError.equals("")) {
             errors.add(phone_numberError);
         }
 
         //メールアドレスのチェック
-        String mail_adressError = validateName(cv.getName());
+        String mail_adressError = validateMail_adress(cv.getMail_adress());
         if (!mail_adressError.equals("")) {
             errors.add(mail_adressError);
         }
@@ -82,7 +82,7 @@ public class CustomerValidator {
     }
 
     /**
-     * @param service EmployeeServiceのインスタンス
+     * @param service CustomerServiceのインスタンス
      * @param code 顧客番号
      * @return 顧客テーブルに登録されている同一顧客番号のデータの件数
      */
@@ -101,6 +101,35 @@ public class CustomerValidator {
 
         if (name == null || name.equals("")) {
             return MessageConst.E_NONAMECUS.getMessage();
+        }
+
+        //入力値がある場合は空文字を返却
+        return "";
+    }
+
+    /**
+     * 電話番号に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param phone_number 電話番号
+     * @return エラーメッセージ
+     */
+    private static String validatePhone_number(String phone_number) {
+
+        if (phone_number == null || phone_number.equals("")) {
+            return MessageConst.E_NOPHONE_CODE.getMessage();
+        }
+
+        //入力値がある場合は空文字を返却
+        return "";
+    }
+    /**
+     * 電話番号に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param phone_number 電話番号
+     * @return エラーメッセージ
+     */
+    private static String validateMail_adress(String mail_adress) {
+
+        if (mail_adress == null || mail_adress.equals("")) {
+            return MessageConst.E_NOMAIL_CODE.getMessage();
         }
 
         //入力値がある場合は空文字を返却
