@@ -131,7 +131,7 @@ public class CustomerAction extends ActionBase {
      */
     public void show() throws ServletException, IOException {
 
-        //idを条件に従業員データを取得する
+        //idを条件に顧客データを取得する
         CustomerView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CUS_ID)));
 
         if (cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
@@ -141,10 +141,34 @@ public class CustomerAction extends ActionBase {
             return;
         }
 
-        putRequestScope(AttributeConst.CUSTOMER, cv); //取得した従業員情報
+        putRequestScope(AttributeConst.CUSTOMER, cv); //取得した顧客情報
 
         //詳細画面を表示
         forward(ForwardConst.FW_CUS_SHOW);
+    }
+    /**
+     * 編集画面を表示する
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void edit() throws ServletException, IOException {
+
+        //idを条件に顧客データを取得する
+        CustomerView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CUS_ID)));
+
+        if (cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
+
+            //データが取得できなかった、または論理削除されている場合はエラー画面を表示
+            forward(ForwardConst.FW_ERR_UNKNOWN);
+            return;
+        }
+
+        putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+        putRequestScope(AttributeConst.EMPLOYEE, cv); //取得した顧客情報
+
+        //編集画面を表示する
+        forward(ForwardConst.FW_CUS_EDIT);
+
     }
 
 
