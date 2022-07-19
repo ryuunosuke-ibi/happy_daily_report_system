@@ -62,6 +62,7 @@ public interface JpaConst {
 
     //JPQL内パラメータ
     String JPQL_PARM_CODE = "code"; //社員番号
+    String JPQL_PARM_CUSCODE = "cuscode"; //顧客番号
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
     String JPQL_PARM_CUSTOMER = "customer"; //顧客

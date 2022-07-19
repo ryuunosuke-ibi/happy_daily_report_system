@@ -48,6 +48,8 @@ public enum AttributeConst {
     CUS_ID("id"),
     CUS_CODE("code"),
     CUS_NAME("name"),
+    CUS_PHONE_NUMBER("phone_number"),
+    CUS_MAIL_ADRESS("mail_adress"),
     CUS_ADMIN_FLG("admin_flag"),
 
     //日報管理

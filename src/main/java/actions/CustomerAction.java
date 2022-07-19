@@ -44,7 +44,7 @@ public class CustomerAction extends ActionBase {
         int page = getPage();
         List<CustomerView> customers = service.getPerPage(page);
 
-        //全ての従業員データの件数を取得
+        //全ての顧客データの件数を取得
         long customerCount = service.countAll();
 
         putRequestScope(AttributeConst.CUSTOMERS, customers); //取得した顧客データ
@@ -63,5 +63,19 @@ public class CustomerAction extends ActionBase {
         forward(ForwardConst.FW_CUS_INDEX);
 
     }
+    /**
+     * 新規登録画面を表示する
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void entryNew() throws ServletException, IOException {
+
+        putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+        putRequestScope(AttributeConst.CUSTOMER, new CustomerView()); //空の顧客インスタンス
+
+        //新規登録画面を表示
+        forward(ForwardConst.FW_CUS_NEW);
+    }
+
 
 }
