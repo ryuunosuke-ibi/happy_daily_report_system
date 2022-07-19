@@ -12,7 +12,7 @@ import models.Customer;
 import models.validators.CustomerValidator;
 
 /**
- * 従業員テーブルの操作に関わる処理を行うクラス
+ * 顧客テーブルの操作に関わる処理を行うクラス
  */
 public class CustomerService extends ServiceBase {
 
