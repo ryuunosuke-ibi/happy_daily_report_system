@@ -148,7 +148,7 @@ public class CustomerService extends ServiceBase {
 
         //バリデーションエラーがなければデータを更新する
         if (errors.size() == 0) {
-            update(savedCus);
+            //update(savedCus);
 
             updateInternal(cv);
         }
@@ -175,6 +175,7 @@ public class CustomerService extends ServiceBase {
 
         //更新処理を行う
         update(savedCus);
+
 
     }
 

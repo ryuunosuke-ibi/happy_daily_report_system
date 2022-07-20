@@ -210,8 +210,28 @@ public class CustomerAction extends ActionBase {
                 putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
 
                 //一覧画面にリダイレクト
-                redirect(ForwardConst.ACT_CUS, ForwardConst.FW_CUS_INDEX);
+                redirect(ForwardConst.ACT_CUS, ForwardConst.CMD_INDEX);
             }
+        }
+    }
+    /**
+     * 論理削除を行う
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void destroy() throws ServletException, IOException {
+
+        //CSRF対策 tokenのチェック
+        if (checkToken()) {
+
+            //idを条件に顧客データを論理削除する
+            service.destroy(toNumber(getRequestParam(AttributeConst.CUS_ID)));
+
+            //セッションに削除完了のフラッシュメッセージを設定
+            putSessionScope(AttributeConst.FLUSH, MessageConst.I_DELETED.getMessage());
+
+            //一覧画面にリダイレクト
+            redirect(ForwardConst.ACT_CUS, ForwardConst.CMD_INDEX);
         }
     }
 

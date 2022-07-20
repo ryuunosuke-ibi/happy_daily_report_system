@@ -13,26 +13,6 @@
 
         <h2>id : ${customer.id} の顧客情報 編集ページ</h2>
 
-        <table>
-            <tbody>
-                <tr>
-                    <th>顧客番号</th>
-                    <td><c:out value="${customer.code}" /></td>
-                </tr>
-                <tr>
-                    <th>顧客名</th>
-                    <td><c:out value="${customer.name}" /></td>
-                </tr>
-                <tr>
-                    <th>電話番号</th>
-                    <td><c:out value="${customer.phone_number}" /></td>
-                </tr>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td><c:out value="${customer.mail_adress}" /></td>
-                </tr>
-            </tbody>
-        </table>
                 <form method="POST"
                  action="<c:url value='?action=${action}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
