@@ -53,7 +53,7 @@ public interface JpaConst {
     String CUS_COL_DELETE_FLAG = "delete_flag"; //削除フラグ
 
     //商談テーブル
-    String TABLE_BUS = "business"; //テーブル名
+    String TABLE_BUS = "businesss"; //テーブル名
     //商談テーブルカラム
     String BUS_COL_ID = "id"; //id
     String BUS_COL_EMP = "employee_id"; //商談を作成した従業員のid
