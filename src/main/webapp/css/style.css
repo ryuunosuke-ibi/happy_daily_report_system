@@ -167,3 +167,24 @@ tr.row1 {
 tr.row0 {
         background-color: #ffffff;
 }
+
+table#business_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#business_list .business_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#business_list .business_date {
+    width: 20%;
+}
+
+table#business_list .business_title {
+    width: 37%;
+}
+
+table#business_list .business_action {
+    width: 13%;
+}

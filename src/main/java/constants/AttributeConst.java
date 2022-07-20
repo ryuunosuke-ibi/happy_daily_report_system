@@ -59,7 +59,19 @@ public enum AttributeConst {
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
-    REP_CONTENT("content");
+    REP_CONTENT("content"),
+
+    //商談管理
+    BUSINESS("business"),
+    BUSINESSS("businesss"),
+    BUS_COUNT("businesss_count"),
+    BUS_ID("id"),
+    BUS_DATE("business_date"),
+    BUS_TITLE("title"),
+    BUS_CONTENT("content");
+
+
+
 
 
 
