@@ -52,6 +52,17 @@ public interface JpaConst {
     String CUS_COL_UPDATED_AT = "updated_at"; //更新日時
     String CUS_COL_DELETE_FLAG = "delete_flag"; //削除フラグ
 
+    //商談テーブル
+    String TABLE_BUS = "business"; //テーブル名
+    //商談テーブルカラム
+    String BUS_COL_ID = "id"; //id
+    String BUS_COL_EMP = "employee_id"; //商談を作成した従業員のid
+    String BUS_COL_BUS_DATE = "business_date"; //いつの商談かを示す日付
+    String BUS_COL_TITLE = "title"; //商談のタイトル
+    String BUS_COL_CONTENT = "content"; //商談の内容
+    String BUS_COL_CREATED_AT = "created_at"; //登録日時
+    String BUS_COL_UPDATED_AT = "updated_at"; //更新日時
+
     int CUS_DEL_TRUE = 1; //削除フラグON(削除済み)
     int CUS_DEL_FALSE = 0; //削除フラグOFF(現役)
 
@@ -59,6 +70,8 @@ public interface JpaConst {
     String ENTITY_EMP = "employee"; //従業員
     String ENTITY_REP = "report"; //日報
     String ENTITY_CUS = "customer"; //顧客
+    String ENTITY_BUS = "business"; //商談
+
 
     //JPQL内パラメータ
     String JPQL_PARM_CODE = "code"; //社員番号
@@ -66,6 +79,8 @@ public interface JpaConst {
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
     String JPQL_PARM_CUSTOMER = "customer"; //顧客
+    String JPQL_PARM_BUSINESS = "business"; //商談
+
 
     //NamedQueryの nameとquery
     //全ての従業員をidの降順に取得する
@@ -79,7 +94,8 @@ public interface JpaConst {
     String Q_EMP_GET_BY_CODE_AND_PASS_DEF = "SELECT e FROM Employee AS e WHERE e.deleteFlag = 0 AND e.code = :" + JPQL_PARM_CODE + " AND e.password = :" + JPQL_PARM_PASSWORD;
     //指定した社員番号を保持する従業員の件数を取得する
     String Q_EMP_COUNT_REGISTERED_BY_CODE = ENTITY_EMP + ".countRegisteredByCode";
-String Q_EMP_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :" + JPQL_PARM_CODE;;
+    String Q_EMP_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :" + JPQL_PARM_CODE;;
+
     //全ての日報をidの降順に取得する
     String Q_REP_GET_ALL = ENTITY_REP + ".getAll";
     String Q_REP_GET_ALL_DEF = "SELECT r FROM Report AS r ORDER BY r.id DESC";
@@ -114,5 +130,19 @@ String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e 
      //指定した顧客が作成した商談の件数を取得する
     //String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
     //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Business AS r WHERE r.customer = :" + JPQL_PARM_CUSTOMER;
+
+
+    //全ての商談をidの降順に取得する
+    String Q_BUS_GET_ALL = ENTITY_BUS + ".getAll";
+    String Q_BUS_GET_ALL_DEF = "SELECT r FROM Business AS r ORDER BY r.id DESC";
+    //全ての商談の件数を取得する
+    String Q_BUS_COUNT = ENTITY_BUS + ".count";
+    String Q_BUS_COUNT_DEF = "SELECT COUNT(r) FROM Business AS r";
+    //指定した従業員が作成した商談を全件idの降順で取得する
+    String Q_BUS_GET_ALL_MINE = ENTITY_BUS + ".getAllMine";
+    String Q_BUS_GET_ALL_MINE_DEF = "SELECT r FROM Business AS r WHERE r.employee = :" + JPQL_PARM_BUSINESS + " ORDER BY r.id DESC";
+    //指定した従業員が作成した商談の件数を取得する
+    String Q_BUS_COUNT_ALL_MINE = ENTITY_BUS + ".countAllMine";
+    String Q_BUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Business AS r WHERE r.employee = :" + JPQL_PARM_BUSINESS;
 
 }

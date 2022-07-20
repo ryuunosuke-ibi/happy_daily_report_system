@@ -5,6 +5,7 @@
         <class>models.Employee</class>
         <class>models.Report</class>
         <class>models.Customer</class>
+        <class>models.Business</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
