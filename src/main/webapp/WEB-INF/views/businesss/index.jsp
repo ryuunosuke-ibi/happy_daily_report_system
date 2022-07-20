@@ -35,7 +35,7 @@
 
                         <td class="business_date"><fmt:formatDate value='${businessDay}' pattern='yyyy-MM-dd' /></td>
                         <td class="business_title">${business.title}</td>
-                        <td class="business_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${business.id}' />">詳細を見る</a></td>
+                        <td class="business_action"><a href="<c:url value='?action=${actBus}&command=${commShow}&id=${business.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

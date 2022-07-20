@@ -7,12 +7,12 @@ import actions.views.BusinessView;
 import constants.MessageConst;
 
 /**
- * 日報インスタンスに設定されている値のバリデーションを行うクラス
+ * 商談インスタンスに設定されている値のバリデーションを行うクラス
  */
 public class BusinessValidator {
 
     /**
-     * 日報インスタンスの各項目についてバリデーションを行う
+     * 商談インスタンスの各項目についてバリデーションを行う
      * @param bv 商談インスタンス
      * @return エラーのリスト
      */

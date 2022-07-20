@@ -47,7 +47,7 @@ public class BusinessService extends ServiceBase {
     }
 
     /**
-     * 指定されたページ数の一覧画面に表示する商談データを取得し、ReportViewのリストで返却する
+     * 指定されたページ数の一覧画面に表示する商談データを取得し、BusinessViewのリストで返却する
      * @param page ページ数
      * @return 一覧画面に表示するデータのリスト
      */
