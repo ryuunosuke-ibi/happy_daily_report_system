@@ -6,6 +6,7 @@
 <c:set var="actTop" value="${ForwardConst.ACT_TOP.getValue()}" />
 <c:set var="actEmp" value="${ForwardConst.ACT_EMP.getValue()}" />
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
+<c:set var="actBus" value="${ForwardConst.ACT_BUS.getValue()}" />
 <c:set var="actCus" value="${ForwardConst.ACT_CUS.getValue()}" />
 <c:set var="actAuth" value="${ForwardConst.ACT_AUTH.getValue()}" />
 
@@ -27,13 +28,16 @@
                 <h1><a href="<c:url value='/?action=${actTop}&command=${commIdx}' />">日報管理システム</a></h1>&nbsp;&nbsp;&nbsp;
                 <c:if test="${sessionScope.login_employee != null}">
                     <c:if test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
-                        <a href="<c:url value='?action=${actEmp}&command=${commIdx}' />">従業員管理</a>&nbsp;
+                <a href="<c:url value='?action=${actEmp}&command=${commIdx}' />">従業員管理</a>&nbsp;
                     </c:if>
-                    <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">日報管理</a>&nbsp;
-                </c:if>
-                <c:if test="${sessionScope.login_employee != null}">
+                <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">日報管理</a>&nbsp;
+                    </c:if>
+                    <c:if test="${sessionScope.login_employee != null}">
+                <a href="<c:url value='?action=${actBus}&command=${commIdx}' />">商談管理</a>&nbsp;
+                    </c:if>
+                    <c:if test="${sessionScope.login_employee != null}">
                 <a href="<c:url value='?action=${actCus}&command=${commIdx}' />">顧客管理</a>&nbsp;
-                </c:if>
+                    </c:if>
             </div>
             <c:if test="${sessionScope.login_employee != null}">
                 <div id="employee_name">
