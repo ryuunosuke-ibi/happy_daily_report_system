@@ -15,7 +15,7 @@ import constants.MessageConst;
 import services.BusinessService;
 
 /**
- * 日報に関する処理を行うActionクラス
+ * 商談に関する処理を行うActionクラス
  *
  */
 public class BusinessAction extends ActionBase {
@@ -42,15 +42,15 @@ public class BusinessAction extends ActionBase {
      */
     public void index() throws ServletException, IOException {
 
-        //指定されたページ数の一覧画面に表示する日報データを取得
+        //指定されたページ数の一覧画面に表示する商談データを取得
         int page = getPage();
         List<BusinessView> businesss = service.getAllPerPage(page);
 
         //全日報データの件数を取得
         long businesssCount = service.countAll();
 
-        putRequestScope(AttributeConst.BUSINESSS, businesss); //取得した日報データ
-        putRequestScope(AttributeConst.BUS_COUNT, businesssCount); //全ての日報データの件数
+        putRequestScope(AttributeConst.BUSINESSS, businesss); //取得した商談データ
+        putRequestScope(AttributeConst.BUS_COUNT, businesssCount); //全ての商談データの件数
         putRequestScope(AttributeConst.PAGE, page); //ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
 
@@ -146,19 +146,89 @@ public class BusinessAction extends ActionBase {
      */
     public void show() throws ServletException, IOException {
 
-        //idを条件に日報データを取得する
+        //idを条件に商談データを取得する
         BusinessView bv = service.findOne(toNumber(getRequestParam(AttributeConst.BUS_ID)));
 
         if (bv == null) {
-            //該当の日報データが存在しない場合はエラー画面を表示
+            //該当の商談データが存在しない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
 
         } else {
 
-            putRequestScope(AttributeConst.BUSINESS, bv); //取得した日報データ
+            putRequestScope(AttributeConst.BUSINESS, bv); //取得した商談データ
 
             //詳細画面を表示
             forward(ForwardConst.FW_BUS_SHOW);
+        }
+    }
+    /**
+     * 編集画面を表示する
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void edit() throws ServletException, IOException {
+
+        //idを条件に日報データを取得する
+        BusinessView bv = service.findOne(toNumber(getRequestParam(AttributeConst.BUS_ID)));
+
+        //セッションからログイン中の従業員情報を取得
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+
+        if (bv == null || ev.getId() != bv.getEmployee().getId()) {
+            //該当の商談データが存在しない、または
+            //ログインしている従業員が商談の作成者でない場合はエラー画面を表示
+            forward(ForwardConst.FW_ERR_UNKNOWN);
+
+        } else {
+
+            putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+            putRequestScope(AttributeConst.BUSINESS, bv); //取得した商談データ
+
+            //編集画面を表示
+            forward(ForwardConst.FW_BUS_EDIT);
+        }
+
+    }
+    /**
+     * 更新を行う
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void update() throws ServletException, IOException {
+
+        //CSRF対策 tokenのチェック
+        if (checkToken()) {
+
+            //idを条件に商談データを取得する
+            BusinessView bv = service.findOne(toNumber(getRequestParam(AttributeConst.BUS_ID)));
+
+            //入力された商談内容を設定する
+            bv.setBusinessDate(toLocalDate(getRequestParam(AttributeConst.BUS_DATE)));
+            bv.setTitle(getRequestParam(AttributeConst.BUS_TITLE));
+            bv.setContent(getRequestParam(AttributeConst.BUS_CONTENT));
+
+            //商談データを更新する
+            List<String> errors = service.update(bv);
+
+            if (errors.size() > 0) {
+                //更新中にエラーが発生した場合
+
+                putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+                putRequestScope(AttributeConst.BUSINESS, bv); //入力された商談情報
+                putRequestScope(AttributeConst.ERR, errors); //エラーのリスト
+
+                //編集画面を再表示
+                forward(ForwardConst.FW_BUS_EDIT);
+            } else {
+                //更新中にエラーがなかった場合
+
+                //セッションに更新完了のフラッシュメッセージを設定
+                putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
+
+                //一覧画面にリダイレクト
+                redirect(ForwardConst.ACT_BUS, ForwardConst.CMD_INDEX);
+
+            }
         }
     }
 }

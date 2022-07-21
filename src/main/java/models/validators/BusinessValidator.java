@@ -19,13 +19,13 @@ public class BusinessValidator {
     public static List<String> validate(BusinessView bv) {
         List<String> errors = new ArrayList<String>();
 
-        //タイトルのチェック
+        //商談名のチェック
         String titleError = validateTitle(bv.getTitle());
         if (!titleError.equals("")) {
             errors.add(titleError);
         }
 
-        //内容のチェック
+        //商談名のチェック
         String contentError = validateContent(bv.getContent());
         if (!contentError.equals("")) {
             errors.add(contentError);
@@ -35,19 +35,18 @@ public class BusinessValidator {
     }
 
     /**
-     * タイトルに入力値があるかをチェックし、入力値がなければエラーメッセージを返却
-     * @param title タイトル
+     * 商談名称に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param content 内容
      * @return エラーメッセージ
      */
     private static String validateTitle(String title) {
         if (title == null || title.equals("")) {
-            return MessageConst.E_NOTITLE.getMessage();
+            return MessageConst.E_NOBUSINESSTITLE.getMessage();
         }
 
         //入力値がある場合は空文字を返却
         return "";
     }
-
     /**
      * 内容に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
      * @param content 内容
@@ -61,4 +60,5 @@ public class BusinessValidator {
         //入力値がある場合は空文字を返却
         return "";
     }
+
 }

@@ -64,16 +64,17 @@ public class Business {
     private Employee employee;
 
     /**
-     * いつの日報かを示す日付
+     * いつの商談かを示す日付
      */
     @Column(name = JpaConst.BUS_COL_BUS_DATE, nullable = false)
     private LocalDate businessDate;
 
     /**
-     * 日報のタイトル
+     * 商談のタイトル
      */
     @Column(name = JpaConst.BUS_COL_TITLE, length = 255, nullable = false)
     private String title;
+
 
     /**
      * 日報の内容

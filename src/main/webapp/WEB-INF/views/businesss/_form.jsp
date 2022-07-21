@@ -26,7 +26,7 @@
 <input type="text" name="${AttributeConst.CUS_NAME.getValue()}" id="${AttributeConst.CUS_NAME.getValue()}" value="${customer.name}" />
 <br /><br />
 
-<label for="${AttributeConst.REP_TITLE.getValue()}">商談名称</label><br />
+<label for="${AttributeConst.BUS_TITLE.getValue()}">商談名称</label><br />
 <input type="text" name="${AttributeConst.BUS_TITLE.getValue()}" id="${AttributeConst.BUS_TITLE.getValue()}" value="${business.title}" />
 <br /><br />
 
