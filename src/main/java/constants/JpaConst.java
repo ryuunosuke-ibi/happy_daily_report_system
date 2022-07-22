@@ -56,7 +56,7 @@ public interface JpaConst {
     String TABLE_BUS = "businesss"; //テーブル名
     //商談テーブルカラム
     String BUS_COL_ID = "id"; //id
-    String BUS_COL_EMP = "employee_id"; //商談を作成した従業員のid
+    //String BUS_COL_CUS = "cuntomer_id"; //商談に関する顧客のid
     String BUS_COL_BUS_DATE = "business_date"; //いつの商談かを示す日付
     String BUS_COL_TITLE = "title"; //商談のタイトル
     String BUS_COL_CONTENT = "content"; //商談の内容

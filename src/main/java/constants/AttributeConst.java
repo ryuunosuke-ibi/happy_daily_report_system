@@ -68,7 +68,8 @@ public enum AttributeConst {
     BUS_ID("id"),
     BUS_DATE("business_date"),
     BUS_TITLE("title"),
-    BUS_CONTENT("content");
+    BUS_CONTENT("content"),
+    BUS_EMPLOYEE("employee");
 
     private final String text;
     private final Integer i;
