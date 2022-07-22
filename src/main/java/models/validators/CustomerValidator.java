@@ -122,7 +122,7 @@ public class CustomerValidator {
         return "";
     }
     /**
-     * 電話番号に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * メールアドレスに入力値があるかをチェックし、入力値がなければエラーメッセージを返却
      * @param phone_number 電話番号
      * @return エラーメッセージ
      */

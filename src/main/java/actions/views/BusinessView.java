@@ -27,8 +27,6 @@ public class BusinessView {
      * 商談を登録した従業員
      */
     private EmployeeView employee;
-
-    /**
     /**
      * いつの商談かを示す日付
      */

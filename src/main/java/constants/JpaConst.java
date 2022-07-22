@@ -117,19 +117,19 @@ public interface JpaConst {
     //全ての顧客の件数を取得する
     String Q_CUS_COUNT = ENTITY_CUS + ".count";
     String Q_CUS_COUNT_DEF = "SELECT COUNT(e) FROM Customer AS e";
-  //指定した顧客番号を保持する従業員の件数を取得する
+    //指定した顧客番号を保持する従業員の件数を取得する
     String Q_CUS_COUNT_REGISTERED_BY_CODE = ENTITY_CUS + ".countRegisteredByCode";
-String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e WHERE e.code = :" + JPQL_PARM_CODE;;
+    String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e WHERE e.code = :" + JPQL_PARM_CODE;;
     //指定した従業員が作成した顧客の件数を取得する
-   // String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
+    //String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
     //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Customer AS r WHERE r.employee = :" + JPQL_PARM_CUSTOMER;
     //顧客番号を条件に未削除の顧客を取得する
     String Q_CUS_GET_BY_CODE = ENTITY_EMP + ".getByCode";
     String Q_CUS_GET_BY_CODE_DEF = "SELECT e FROM Customer AS e WHERE e.deleteFlag = 0 AND e.code = :";
 
-     //指定した顧客が作成した商談の件数を取得する
+    //指定した顧客が作成した商談の件数を取得する
     //String Q_CUS_COUNT_ALL_MINE = ENTITY_CUS + ".countAllMine";
-    //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Business AS r WHERE r.customer = :" + JPQL_PARM_CUSTOMER;
+    //String Q_CUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(b) FROM Business AS b WHERE b.customer = :" + JPQL_PARM_CUSTOMER;
 
 
     //全ての商談をidの降順に取得する
@@ -143,6 +143,6 @@ String Q_CUS_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Customer AS e 
     String Q_BUS_GET_ALL_MINE_DEF = "SELECT r FROM Business AS r WHERE r.employee = :" + JPQL_PARM_BUSINESS + " ORDER BY r.id DESC";
     //指定した従業員が作成した商談の件数を取得する
     String Q_BUS_COUNT_ALL_MINE = ENTITY_BUS + ".countAllMine";
-    String Q_BUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Business AS r WHERE r.employee = :" + JPQL_PARM_BUSINESS;
+    String Q_BUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(b) FROM Business AS b WHERE b.employee = :" + JPQL_PARM_BUSINESS;
 
 }

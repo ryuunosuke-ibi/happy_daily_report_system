@@ -13,8 +13,7 @@
 
         <h2>id : ${customer.id} の顧客情報 編集ページ</h2>
 
-                <form method="POST"
-                 action="<c:url value='?action=${action}&command=${commUpd}' />">
+                <form method="POST"action="<c:url value='?action=${action}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
         </form>
         <p>

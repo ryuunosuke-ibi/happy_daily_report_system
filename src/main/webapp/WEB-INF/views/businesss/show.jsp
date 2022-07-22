@@ -15,13 +15,18 @@
         <table>
             <tbody>
                 <tr>
-                    <th>氏名</th>
+                    <th>担当者</th>
                     <td><c:out value="${business.employee.name}" /></td>
                 </tr>
                 <tr>
-                    <th>日付</th>
+                <tr>
+                    <th>商談日</th>
                     <fmt:parseDate value="${business.businessDate}" pattern="yyyy-MM-dd" var="businessDay" type="date" />
                     <td><fmt:formatDate value='${businessDay}' pattern='yyyy-MM-dd' /></td>
+                </tr>
+                <tr>
+                    <th>タイトル</th>
+                    <td><pre><c:out value="${business_title}" /></pre></td>
                 </tr>
                 <tr>
                     <th>内容</th>
@@ -39,12 +44,9 @@
                 </tr>
             </tbody>
         </table>
-
-        <c:if test="${sessionScope.login_employee.id == business.employee.id}">
             <p>
                 <a href="<c:url value='?action=${actBus}&command=${commEdt}&id=${business.id}' />">この商談を編集する</a>
             </p>
-        </c:if>
 
         <p>
             <a href="<c:url value='?action=${actBus}&command=${commIdx}' />">一覧に戻る</a>

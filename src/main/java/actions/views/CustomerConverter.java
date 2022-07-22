@@ -26,7 +26,6 @@ public class CustomerConverter {
                 cv.getName(),
                 cv.getPhone_number(),
                 cv.getMail_adress(),
-
                 cv.getCreatedAt(),
                 cv.getUpdatedAt(),
                 cv.getDeleteFlag() == null

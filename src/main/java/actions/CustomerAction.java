@@ -182,7 +182,7 @@ public class CustomerAction extends ActionBase {
         if (checkToken()) {
             //パラメータの値を元に顧客情報のインスタンスを作成する
             CustomerView cv = new CustomerView(
-                    null,
+                    toNumber(getRequestParam(AttributeConst.CUS_ID)),
                     getRequestParam(AttributeConst.CUS_CODE),
                     getRequestParam(AttributeConst.CUS_NAME),
                     getRequestParam(AttributeConst.CUS_PHONE_NUMBER),

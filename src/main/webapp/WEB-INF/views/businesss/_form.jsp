@@ -13,17 +13,12 @@
     </div>
 </c:if>
 <fmt:parseDate value="${business.businessDate}" pattern="yyyy-MM-dd" var="businessDay" type="date" />
-<label for="${AttributeConst.BUS_DATE.getValue()}">日付</label><br />
+<label for="${AttributeConst.BUS_DATE.getValue()}">商談日</label><br />
 <input type="date" name="${AttributeConst.BUS_DATE.getValue()}" id="${AttributeConst.BUS_DATE.getValue()}" value="<fmt:formatDate value='${businessDay}' pattern='yyyy-MM-dd' />" />
 <br /><br />
 
-<label>氏名</label><br />
+<label>担当者</label><br />
 <c:out value="${sessionScope.login_employee.name}" />
-<br /><br />
-
-<label>顧客名</label><br />
-<c:out value="${sessionScope.login_customer.name}" />
-<input type="text" name="${AttributeConst.CUS_NAME.getValue()}" id="${AttributeConst.CUS_NAME.getValue()}" value="${customer.name}" />
 <br /><br />
 
 <label for="${AttributeConst.BUS_TITLE.getValue()}">商談名称</label><br />

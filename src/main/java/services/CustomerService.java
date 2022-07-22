@@ -150,7 +150,7 @@ public class CustomerService extends ServiceBase {
         if (errors.size() == 0) {
             //update(savedCus);
 
-            updateInternal(cv);
+            updateInternal(savedCus);
         }
 
         //エラーを返却（エラーがなければ0件の空リスト）
