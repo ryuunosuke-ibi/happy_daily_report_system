@@ -70,12 +70,6 @@ public enum AttributeConst {
     BUS_TITLE("title"),
     BUS_CONTENT("content");
 
-
-
-
-
-
-
     private final String text;
     private final Integer i;
 
