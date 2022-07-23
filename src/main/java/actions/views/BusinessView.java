@@ -24,9 +24,14 @@ public class BusinessView {
     private Integer id;
 
     /**
-     * 商談を登録した従業員
+     * 商談をした顧客
      */
-    private EmployeeView employee;
+    private String customer;
+    /**
+     * 商談を作成した従業員
+     */
+    private String employee;
+
     /**
      * いつの商談かを示す日付
      */

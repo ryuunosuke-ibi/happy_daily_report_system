@@ -16,17 +16,20 @@
             <tbody>
                 <tr>
                     <th>担当者</th>
-                    <td><c:out value="${business.employee.name}" /></td>
+                    <td><c:out value="${business.employee}" /></td>
                 </tr>
-                <tr>
+                 <tr>
+                    <th>顧客名</th>
+                    <td><c:out value="${business.customer}" /></td>
+                </tr>
                 <tr>
                     <th>商談日</th>
                     <fmt:parseDate value="${business.businessDate}" pattern="yyyy-MM-dd" var="businessDay" type="date" />
                     <td><fmt:formatDate value='${businessDay}' pattern='yyyy-MM-dd' /></td>
                 </tr>
                 <tr>
-                    <th>タイトル</th>
-                    <td><pre><c:out value="${business_title}" /></pre></td>
+                    <th>商談名称</th>
+                    <td><pre><c:out value="${business.title}" /></pre></td>
                 </tr>
                 <tr>
                     <th>内容</th>

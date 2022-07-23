@@ -19,6 +19,7 @@ public enum AttributeConst {
 
     //ログイン中の従業員
     LOGIN_EMP("login_employee"),
+    LOGIN_CUS("login_customer"),
 
     //ログイン画面
     LOGIN_ERR("loginError"),
@@ -69,7 +70,8 @@ public enum AttributeConst {
     BUS_DATE("business_date"),
     BUS_TITLE("title"),
     BUS_CONTENT("content"),
-    BUS_EMPLOYEE("employee");
+    BUS_EMPLOYEE("employee"),
+    BUS_CUSTOMER("customer");
 
     private final String text;
     private final Integer i;

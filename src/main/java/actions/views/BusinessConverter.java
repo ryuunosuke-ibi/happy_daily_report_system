@@ -20,7 +20,8 @@ public class BusinessConverter {
     public static Business toModel(BusinessView bv) {
         return new Business(
                 bv.getId(),
-                EmployeeConverter.toModel(bv.getEmployee()),
+                bv.getCustomer(),
+                bv.getEmployee(),
                 bv.getBusinessDate(),
                 bv.getTitle(),
                 bv.getContent(),
@@ -41,7 +42,8 @@ public class BusinessConverter {
 
         return new BusinessView(
                 b.getId(),
-                EmployeeConverter.toView(b.getEmployee()),
+                b.getCustomer(),
+                b.getEmployee(),
                 b.getBusinessDate(),
                 b.getTitle(),
                 b.getContent(),
@@ -71,7 +73,8 @@ public class BusinessConverter {
      */
     public static void copyViewToModel(Business b, BusinessView bv) {
         b.setId(bv.getId());
-        b.setEmployee(EmployeeConverter.toModel(bv.getEmployee()));
+        b.setCustomer(bv.getCustomer());
+        b.setEmployee(bv.getEmployee());
         b.setBusinessDate(bv.getBusinessDate());
         b.setTitle(bv.getTitle());
         b.setContent(bv.getContent());

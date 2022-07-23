@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 
 import actions.views.BusinessView;
-import actions.views.EmployeeView;
 import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
@@ -102,13 +101,14 @@ public class BusinessAction extends ActionBase {
                 day = LocalDate.parse(getRequestParam(AttributeConst.BUS_DATE));
             }
 
-            //セッションからログイン中の従業員情報を取得
-            EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+            //セッションから商談をした顧客情報を取得
+            //CustomerView cv = (CustomerView) getSessionScope(AttributeConst.LOGIN_CUS);
 
             //パラメータの値をもとに商談情報のインスタンスを作成する
             BusinessView bv = new BusinessView(
                     null,
-                    ev, //ログインしている従業員を、商談作成者として登録する
+                    getRequestParam(AttributeConst.BUS_CUSTOMER),
+                    getRequestParam(AttributeConst.BUS_EMPLOYEE),
                     day,
                     getRequestParam(AttributeConst.BUS_TITLE),
                     getRequestParam(AttributeConst.BUS_CONTENT),
@@ -168,13 +168,13 @@ public class BusinessAction extends ActionBase {
      */
     public void edit() throws ServletException, IOException {
 
-        //idを条件に日報データを取得する
+        //idを条件に商談データを取得する
         BusinessView bv = service.findOne(toNumber(getRequestParam(AttributeConst.BUS_ID)));
 
-        //セッションからログイン中の従業員情報を取得
-        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+        //セッションから商談をした顧客情報を取得
+        //CustomerView cv = (CustomerView) getSessionScope(AttributeConst.LOGIN_CUS);
 
-        if (bv == null || ev.getId() != bv.getEmployee().getId()) {
+        if (bv == null ){//cv.getId() != bv.getCustomer().getId()) {
             //該当の商談データが存在しない、または
             //ログインしている従業員が商談の作成者でない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
@@ -203,6 +203,8 @@ public class BusinessAction extends ActionBase {
             BusinessView bv = service.findOne(toNumber(getRequestParam(AttributeConst.BUS_ID)));
 
             //入力された商談内容を設定する
+            bv.setCustomer(getRequestParam(AttributeConst.BUS_CUSTOMER));
+            bv.setEmployee(getRequestParam(AttributeConst.BUS_EMPLOYEE));
             bv.setBusinessDate(toLocalDate(getRequestParam(AttributeConst.BUS_DATE)));
             bv.setTitle(getRequestParam(AttributeConst.BUS_TITLE));
             bv.setContent(getRequestParam(AttributeConst.BUS_CONTENT));

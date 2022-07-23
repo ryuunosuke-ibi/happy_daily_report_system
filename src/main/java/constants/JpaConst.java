@@ -56,7 +56,8 @@ public interface JpaConst {
     String TABLE_BUS = "businesss"; //テーブル名
     //商談テーブルカラム
     String BUS_COL_ID = "id"; //id
-    //String BUS_COL_CUS = "cuntomer_id"; //商談に関する顧客のid
+    String BUS_COL_CUS = "customer"; //商談をした顧客
+    String BUS_COL_EMP = "employee"; //商談を作成した従業員
     String BUS_COL_BUS_DATE = "business_date"; //いつの商談かを示す日付
     String BUS_COL_TITLE = "title"; //商談のタイトル
     String BUS_COL_CONTENT = "content"; //商談の内容
@@ -138,11 +139,11 @@ public interface JpaConst {
     //全ての商談の件数を取得する
     String Q_BUS_COUNT = ENTITY_BUS + ".count";
     String Q_BUS_COUNT_DEF = "SELECT COUNT(r) FROM Business AS r";
-    //指定した従業員が作成した商談を全件idの降順で取得する
+    //指定された顧客が作成した商談を全件idの降順で取得する
     String Q_BUS_GET_ALL_MINE = ENTITY_BUS + ".getAllMine";
-    String Q_BUS_GET_ALL_MINE_DEF = "SELECT r FROM Business AS r WHERE r.employee = :" + JPQL_PARM_BUSINESS + " ORDER BY r.id DESC";
-    //指定した従業員が作成した商談の件数を取得する
+    String Q_BUS_GET_ALL_MINE_DEF = "SELECT r FROM Business AS r WHERE r.customer = :" + JPQL_PARM_BUSINESS + " ORDER BY r.id DESC";
+    //指定された顧客が作成した商談の件数を取得する
     String Q_BUS_COUNT_ALL_MINE = ENTITY_BUS + ".countAllMine";
-    String Q_BUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(b) FROM Business AS b WHERE b.employee = :" + JPQL_PARM_BUSINESS;
+    String Q_BUS_COUNT_ALL_MINE_DEF = "SELECT COUNT(b) FROM Business AS b WHERE b.customer = :" + JPQL_PARM_BUSINESS;
 
 }

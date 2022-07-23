@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -57,11 +55,16 @@ public class Business {
     private Integer id;
 
     /**
-     * 商談を登録した従業員
+     *商談をした顧客
      */
-    @ManyToOne
-    @JoinColumn(name = JpaConst.BUS_COL_EMP, nullable = false)
-    private Employee employee;
+    @Column(name = JpaConst.BUS_COL_CUS, length = 255, nullable = false)
+    private String customer;
+
+    /**
+     * 商談を作成した従業員
+     */
+    @Column(name = JpaConst.BUS_COL_EMP, length = 255, nullable = false)
+    private String employee;
 
     /**
      * いつの商談かを示す日付

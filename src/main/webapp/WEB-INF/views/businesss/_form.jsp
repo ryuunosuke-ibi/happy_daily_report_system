@@ -17,8 +17,12 @@
 <input type="date" name="${AttributeConst.BUS_DATE.getValue()}" id="${AttributeConst.BUS_DATE.getValue()}" value="<fmt:formatDate value='${businessDay}' pattern='yyyy-MM-dd' />" />
 <br /><br />
 
-<label>担当者</label><br />
-<c:out value="${sessionScope.login_employee.name}" />
+<label for="${AttributeConst.BUS_EMPLOYEE.getValue()}">担当者</label><br />
+<input type="text" name="${AttributeConst.BUS_EMPLOYEE.getValue()}" id="${AttributeConst.BUS_EMPLOYEE.getValue()}" value="${business.employee}" />
+<br /><br />
+
+<label for="${AttributeConst.BUS_CUSTOMER.getValue()}">顧客名</label><br />
+<input type="text" name="${AttributeConst.BUS_CUSTOMER.getValue()}" id="${AttributeConst.BUS_CUSTOMER.getValue()}" value="${business.customer}" />
 <br /><br />
 
 <label for="${AttributeConst.BUS_TITLE.getValue()}">商談名称</label><br />
