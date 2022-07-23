@@ -19,7 +19,6 @@ public enum AttributeConst {
 
     //ログイン中の従業員
     LOGIN_EMP("login_employee"),
-    LOGIN_CUS("login_customer"),
 
     //ログイン画面
     LOGIN_ERR("loginError"),

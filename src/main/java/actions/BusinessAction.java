@@ -102,7 +102,7 @@ public class BusinessAction extends ActionBase {
             }
 
             //セッションから商談をした顧客情報を取得
-            //CustomerView cv = (CustomerView) getSessionScope(AttributeConst.LOGIN_CUS);
+            //CustomerView cv = (CustomerView) getSessionScope(AttributeConst.CUSTOMER);
 
             //パラメータの値をもとに商談情報のインスタンスを作成する
             BusinessView bv = new BusinessView(
@@ -172,7 +172,7 @@ public class BusinessAction extends ActionBase {
         BusinessView bv = service.findOne(toNumber(getRequestParam(AttributeConst.BUS_ID)));
 
         //セッションから商談をした顧客情報を取得
-        //CustomerView cv = (CustomerView) getSessionScope(AttributeConst.LOGIN_CUS);
+        //CustomerView cv = (CustomerView) getSessionScope(AttributeConst.CUSTOMER);
 
         if (bv == null ){//cv.getId() != bv.getCustomer().getId()) {
             //該当の商談データが存在しない、または

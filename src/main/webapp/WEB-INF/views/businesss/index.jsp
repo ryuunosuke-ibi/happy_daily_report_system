@@ -52,7 +52,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='?action=${actBus}&command=${commNew}' />">商談の登録</a></p>
+        <h3>商談の登録は顧客管理から出来ます</h3>
 
     </c:param>
 </c:import>

@@ -4,6 +4,7 @@
 <%@ page import="constants.ForwardConst" %>
 
 <c:set var="actCus" value="${ForwardConst.ACT_CUS.getValue()}" />
+<c:set var="action" value="${ForwardConst.ACT_BUS.getValue()}" />
 <c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
 <c:set var="commNew" value="${ForwardConst.CMD_NEW.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -22,6 +23,7 @@
                     <th>顧客番号</th>
                     <th>顧客名</th>
                     <th>操作</th>
+                    <th>商談登録</th>
                 </tr>
                 <c:forEach var="customer" items="${customers}" varStatus="status">
                     <tr class="row${status.count % 2}">
@@ -36,7 +38,18 @@
                                     <a href="<c:url value='?action=${actCus}&command=${commShow}&id=${customer.id}' />">詳細を見る</a>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
+                            </td>
+                            <td>
+                            <c:choose>
+                                <c:when test="${customer.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
+                                    （削除済み）
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='?action=${action}&command=${commNew}&id=${customer.id}' />">商談の登録</a>
+                                </c:otherwise>
+                            </c:choose>
+                            </td>
+
                     </tr>
                 </c:forEach>
             </tbody>

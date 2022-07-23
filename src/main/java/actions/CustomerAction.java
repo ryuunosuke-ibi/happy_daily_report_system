@@ -146,6 +146,7 @@ public class CustomerAction extends ActionBase {
         //詳細画面を表示
         forward(ForwardConst.FW_CUS_SHOW);
     }
+
     /**
      * 編集画面を表示する
      * @throws ServletException
