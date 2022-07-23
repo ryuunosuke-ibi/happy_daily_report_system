@@ -19,19 +19,57 @@ public class BusinessValidator {
     public static List<String> validate(BusinessView bv) {
         List<String> errors = new ArrayList<String>();
 
-        //商談名のチェック
+        //担当者のチェック
+        String employeeError = validateEmployee(bv.getEmployee());
+        if (!employeeError.equals("")) {
+            errors.add(employeeError);
+        }
+        //顧客名のチェック
+        String customerError = validateCustomer(bv.getCustomer());
+        if (!customerError.equals("")) {
+            errors.add(customerError);
+        }
+
+        //商談名称のチェック
         String titleError = validateTitle(bv.getTitle());
         if (!titleError.equals("")) {
             errors.add(titleError);
         }
 
-        //商談名のチェック
+        //内容のチェック
         String contentError = validateContent(bv.getContent());
         if (!contentError.equals("")) {
             errors.add(contentError);
         }
 
         return errors;
+    }
+    /**
+     * 担当者に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param content 内容
+     * @return エラーメッセージ
+     */
+    private static String validateEmployee(String employee) {
+        if (employee == null || employee.equals("")) {
+            return MessageConst.E_NOEMPLOYEE.getMessage();
+        }
+
+        //入力値がある場合は空文字を返却
+        return "";
+    }
+
+    /**
+     * 顧客名に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param content 内容
+     * @return エラーメッセージ
+     */
+    private static String validateCustomer(String customer) {
+        if (customer == null || customer.equals("")) {
+            return MessageConst.E_NONAMECUS.getMessage();
+        }
+
+        //入力値がある場合は空文字を返却
+        return "";
     }
 
     /**
