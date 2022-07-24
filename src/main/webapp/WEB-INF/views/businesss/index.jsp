@@ -16,7 +16,7 @@
             </div>
         </c:if>
         <h2>商談　一覧</h2>
-        <table id="business_list">
+        <table id="business_list">z
             <tbody>
                 <tr>
                     <th class="business_employee">担当者</th>

@@ -10,7 +10,7 @@
 
         <h2>商談 編集ページ</h2>
         <form method="POST" action="<c:url value='?action=${actBus}&command=${commUpd}' />">
-            <c:import url="_form.jsp" />
+            <c:import url="_form01.jsp" />
         </form>
 
         <p>
