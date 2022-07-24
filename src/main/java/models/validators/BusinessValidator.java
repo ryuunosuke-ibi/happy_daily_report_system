@@ -25,10 +25,10 @@ public class BusinessValidator {
             errors.add(employeeError);
         }
         //顧客名のチェック
-        //String customerError = validateCustomer(bv.getCustomer());
-        //if (!customerError.equals("")) {
-            //errors.add(customerError);
-        //}
+        String customerError = validateCustomer(bv.getCustomer());
+        if (!customerError.equals("")) {
+            errors.add(customerError);
+        }
 
         //商談名称のチェック
         String titleError = validateTitle(bv.getTitle());
@@ -63,14 +63,14 @@ public class BusinessValidator {
      * @param content 内容
      * @return エラーメッセージ
      */
-    //private static String validateCustomer(String customer) {
-        //if (customer == null || customer.equals("")) {
-            //return MessageConst.E_NONAMECUS.getMessage();
-        //}
+    private static String validateCustomer(String customer) {
+        if (customer == null || customer.equals("")) {
+            return MessageConst.E_NONAMECUS.getMessage();
+        }
 
         //入力値がある場合は空文字を返却
-        //return "";
-    //}
+        return "";
+    }
 
     /**
      * 商談名称に入力値があるかをチェックし、入力値がなければエラーメッセージを返却

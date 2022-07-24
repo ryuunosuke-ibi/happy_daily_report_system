@@ -22,7 +22,9 @@
 <br /><br />
 
 <label for="${AttributeConst.BUS_CUSTOMER.getValue()}">顧客名</label><br />
-<label for="${AttributeConst.BUS_CUSTOMER.getValue()}">顧客名は変えられません。</label><br />
+<h4>顧客名は変更しないでください</h4>
+
+<input type="text" name="${AttributeConst.BUS_CUSTOMER.getValue()}" id="${AttributeConst.BUS_CUSTOMER.getValue()}" value="${business.customer}" />
 <br /><br />
 
 <label for="${AttributeConst.BUS_TITLE.getValue()}">商談名称</label><br />
